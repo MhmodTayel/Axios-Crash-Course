@@ -11,9 +11,10 @@ document.getElementById('cancel').addEventListener('click', cancelToken);
 
 // Show output in browser
 function showOutput(res) {
+
   document.getElementById('res').innerHTML = `
   <div class="card card-body mb-4">
-    <h5>Status: ${res.status}</h5>
+    <h5>Status: <span class="color">${res.status}</span></h5>
   </div>
   <div class="card mt-3">
     <div class="card-header">
@@ -40,11 +41,25 @@ function showOutput(res) {
     </div>
   </div>
 `;
+if (res.status ===200) {
+  document.querySelector('.color').classList.add('green')
+}else {
+  document.querySelector('.color').classList.add('red')
+
+}
 }
 
 // GET REQUEST
 function getTodos() {
-  console.log('GET Request');
+  // axios({
+  //   method: 'get',
+  //   url: 'https://jsonplaceholder.typicode.com/todos',
+  //   params: {
+  //     _limit: 5
+  //   }
+  // }).then(res => showOutput(res))
+  // .catch(err => console.log(err));
+
 }
 
 // POST REQUEST
