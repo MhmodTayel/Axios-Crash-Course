@@ -84,7 +84,15 @@ function removeTodo() {
 
 // SIMULTANEOUS DATA
 function getData() {
-  console.log('Simultaneous Request');
+  axios.all([
+    axios.get('https://jsonplaceholder.typicode.com/todos'),
+    axios.get('https://jsonplaceholder.typicode.com/posts'),
+  ]).then(res => {
+    console.log(res[0]);
+    console.log(res[1]);
+    showOutput(res[1])
+  })
+    .catch(err => console.log(err));
 }
 
 // CUSTOM HEADERS
