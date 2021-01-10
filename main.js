@@ -41,7 +41,7 @@ function showOutput(res) {
     </div>
   </div>
 `;
-if (res.status ===200) {
+if (res.status === 200 || res.status === 201) {
   document.querySelector('.color').classList.add('green')
 }else {
   document.querySelector('.color').classList.add('red')
@@ -69,7 +69,7 @@ function getTodos() {
 
 // POST REQUEST
 function addTodo() {
-  console.log('POST Request');
+  axios.post('https://jsonplaceholder.typicode.com/todos',{title: 'New Todo',completed: false}).then(res => showOutput(res))
 }
 
 // PUT/PATCH REQUEST
