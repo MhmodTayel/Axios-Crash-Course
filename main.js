@@ -86,12 +86,8 @@ function removeTodo() {
 function getData() {
   axios.all([
     axios.get('https://jsonplaceholder.typicode.com/todos'),
-    axios.get('https://jsonplaceholder.typicode.com/posts'),
-  ]).then(res => {
-    console.log(res[0]);
-    console.log(res[1]);
-    showOutput(res[1])
-  })
+    axios.get('https://jsonplaceholder.typicode.com/posts?_limit=5'),
+  ]).then(axios.spread((todos, posts) => showOutput(posts)))
     .catch(err => console.log(err));
 }
 
@@ -114,3 +110,17 @@ function errorHandling() {
 function cancelToken() {
   console.log('Cancel Token');
 }
+
+
+// get timestamp of requests 
+
+axios.interceptors.request.use(
+  config => {
+    console.log(
+      `
+      ${config.method.toUpperCase()} request sent to ${config.url} at ${new Date().getTime()}
+      `
+    );
+    return config
+  }
+)
