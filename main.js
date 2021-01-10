@@ -131,3 +131,14 @@ axios.interceptors.request.use(
     return config
   }
 )
+
+
+/* 
+Axios Crash Course | HTTP Library
+ Traversy Media
+ 
+https://www.youtube.com/watch?v=6LyagkoRWYA
+
+24:50
+
+*/
