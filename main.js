@@ -74,12 +74,12 @@ function addTodo() {
 
 // PUT/PATCH REQUEST
 function updateTodo() {
-  axios.put('https://jsonplaceholder.typicode.com/todos/1',{title: 'Updated Todo',completed: true}).then(res => showOutput(res)).catch(err => console.log(err));
+  axios.patch('https://jsonplaceholder.typicode.com/todos/1',{title: 'Updated Todo',completed: true}).then(res => showOutput(res)).catch(err => console.log(err));
 }
 
 // DELETE REQUEST
 function removeTodo() {
-  console.log('DELETE Request');
+  axios.delete('https://jsonplaceholder.typicode.com/todos/1').then(res => showOutput(res)).catch(err => console.log(err));
 }
 
 // SIMULTANEOUS DATA
